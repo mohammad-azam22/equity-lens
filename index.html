@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Equity Lens</title>
+
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+</head>
+
+<body class="tab1">
+    <div class="header">
+        <span>E</span>
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.65" y1="16.65" x2="21" y2="21" />
+        </svg>
+        <span>UITY LENS</span>
+    </div>
+    <div class="server">
+        <div class="pulse-dot"></div>
+        <span id="message">Server Offline</span>
+    </div>
+    <div class="dashboard">
+        <h1>Stocks Dashboard</h1>
+
+        <div class="stock-selector">
+            <label for="ticker">Select Stock</label>
+            <input list="tickers" id="ticker" placeholder="Search stocks..." value="A - Agilent Technologies, Inc." />
+            <datalist id="tickers"></datalist>
+            <button type="button" onclick="getInfo()">Go</button>
+        </div>
+
+        <!-- TAB BUTTONS -->
+        <div class="tabs">
+            <div class="tab-btn active" data-tab="1">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 21s-7-4.4-9.5-9.2C.5 7.5 3.4 4 7 4
+           c2 0 3.5 1.2 5 3
+           1.5-1.8 3-3 5-3
+           3.6 0 6.5 3.5 4.5 7.8
+           C19 16.6 12 21 12 21z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="2">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3l8 6-3 10H7L4 9l8-6z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="3">
+                <svg viewBox="0 0 24 24">
+                    <path d="M7 5h14l-4 14H3L7 5z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="4">
+                <svg viewBox="0 0 24 24">
+                    <path d="M7 3h10l5 9-5 9H7l-5-9 5-9z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="5">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="6">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3l2.9 6.6L22 10.3l-5 4.8L18.2 22
+           12 18.6 5.8 22 7 15.1 2 10.3l7.1-0.7L12 3z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="7">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3L21 12L12 21L3 12L12 3z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="8">
+                <svg viewBox="0 0 24 24">
+                    <rect x="4" y="4" width="16" height="16" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+
+            </div>
+
+            <div class="tab-btn" data-tab="9">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 4L3 20h18L12 4z" fill="none" stroke="#ffffff" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- TAB CONTENTS -->
+
+        <!-- Section 1 -->
+        <div class="tab-content active" id="tab1">
+            <div class="info-box">
+                <h2>Company Profile</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td id="longName"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Symbol</th>
+                            <td id="symbol"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Industry</th>
+                            <td id="industryDisp"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sector</th>
+                            <td id="sectorDisp"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Count Of Full-time Employees</th>
+                            <td id="fullTimeEmployees"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Website</th>
+                            <td id="website"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Business Summary</th>
+                            <td id="longBusinessSummary"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="tab-content" id="tab2">
+            <div class="info-box">
+                <h2>Company Contact</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td id="address1"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">City</th>
+                            <td id="city"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Zip code</th>
+                            <td id="zip"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">State</th>
+                            <td id="state"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Country</th>
+                            <td id="country"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Phone</th>
+                            <td id="phone"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Region</th>
+                            <td id="region"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="tab-content" id="tab3">
+            <div class="info-box">
+                <h2>Stock Price Snapshot</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Current Price</th>
+                            <td id="currentPrice"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Open</th>
+                            <td id="open"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Previous Close</th>
+                            <td id="previousClose"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Day High</th>
+                            <td id="dayHigh"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Day Low</th>
+                            <td id="dayLow"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">52 Weeks Low</th>
+                            <td id="fiftyTwoWeekLow"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">52 Weeks High</th>
+                            <td id="fiftyTwoWeekHigh"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Volume</th>
+                            <td id="volume"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Average Volume</th>
+                            <td id="averageVolume"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="tab-content" id="tab4">
+            <div class="info-box">
+                <h2>Valuation Metrics</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Market Cap</th>
+                            <td id="marketCap"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Trailing PE</th>
+                            <td id="trailingPE"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Forward PE</th>
+                            <td id="forwardPE"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price To Book</th>
+                            <td id="priceToBook"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price To Sales Trailing 12 Months</th>
+                            <td id="priceToSalesTrailing12Months"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Trailing Peg Ratio</th>
+                            <td id="trailingPegRatio"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="tab-content" id="tab5">
+            <div class="info-box">
+                <h2>Financial Performance & Growth</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Total Revenue</th>
+                            <td id="totalRevenue"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Net Income To Common</th>
+                            <td id="netIncomeToCommon"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Revenue Growth</th>
+                            <td id="revenueGrowth"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Earnings Growth</th>
+                            <td id="earningsGrowth"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Profit Margins</th>
+                            <td id="profitMargins"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Return On Equity</th>
+                            <td id="returnOnEquity"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="tab-content" id="tab6">
+            <div class="info-box">
+                <h2>Dividends & Shareholder Returns</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Dividend Rate</th>
+                            <td id="dividendRate"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dividend Yield</th>
+                            <td id="dividendYield"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Payout Ratio</th>
+                            <td id="payoutRatio"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ex Dividend Date</th>
+                            <td id="exDividendDate"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Last Dividend Value</th>
+                            <td id="lastDividendValue"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="tab-content" id="tab7">
+            <div class="info-box">
+                <h2>Analyst Outlook & Events</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Target Mean Price</th>
+                            <td id="targetMeanPrice"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Target High Price</th>
+                            <td id="targetHighPrice"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Target Low Price</th>
+                            <td id="targetLowPrice"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Number Of Analyst Opinions</th>
+                            <td id="numberOfAnalystOpinions"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Recommendation</th>
+                            <td id="recommendationKey"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Earnings Timestamp</th>
+                            <td id="earningsTimestamp"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 8 -->
+        <div class="tab-content" id="tab8">
+            <div class="info-box">
+                <h2>Historical Stock Prices</h2>
+                <div class="controls">
+                    <label for="from-date">From:</label>
+                    <input type="date" name="from-date" id="from-date">
+                    <label for="to-date">To:</label>
+                    <input type="date" name="to-date" id="to-date">
+                    <button type="button" onclick="getStockData()">Get data</button>
+                </div>
+                <canvas id="historicalDataChart1"></canvas>
+                <canvas id="historicalDataChart2"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 9 -->
+        <div class="tab-content" id="tab9">
+            <div class="info-box">
+                <h2>Stock Price Prediction</h2>
+                <div class="controls">
+                    <label for="days">Prediction Duration (Days)</label>
+                    <input type="range" id="days" min="1" max="30" value="7">
+                    <div class="slider-value">
+                        <span id="daysValue">7</span> day(s)
+                    </div>
+                    <button onclick="getPrediction()">Predict</button>
+                </div>
+                <canvas id="predictionChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./logic.js"></script>
+
+</body>
+
+</html>
