@@ -6,7 +6,7 @@
     <title>Equity Lens</title>
 
     <link rel="stylesheet" href="./styles.css">
-
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
@@ -118,7 +118,7 @@
                             <th scope="row">Name</th>
                             <td id="longName"></td>
                         </tr>
-                        <tr>
+                        <tr title="A short unique code used to identify a company’s stock on the market.">
                             <th scope="row">Symbol</th>
                             <td id="symbol"></td>
                         </tr>
@@ -192,39 +192,39 @@
                 <h2>Stock Price Snapshot</h2>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr title="The latest price at which the stock is trading right now.">
                             <th scope="row">Current Price</th>
                             <td id="currentPrice"></td>
                         </tr>
-                        <tr>
+                        <tr title="The price of the stock when the market opened for the day.">
                             <th scope="row">Open</th>
                             <td id="open"></td>
                         </tr>
-                        <tr>
+                        <tr title="The stock’s final price at the end of the previous trading day.">
                             <th scope="row">Previous Close</th>
                             <td id="previousClose"></td>
                         </tr>
-                        <tr>
+                        <tr title="The highest price the stock reached during the current day.">
                             <th scope="row">Day High</th>
                             <td id="dayHigh"></td>
                         </tr>
-                        <tr>
+                        <tr title="The lowest price the stock dropped to during the current day.">
                             <th scope="row">Day Low</th>
                             <td id="dayLow"></td>
                         </tr>
-                        <tr>
+                        <tr title="The lowest price the stock has traded at in the last 1 year.">
                             <th scope="row">52 Weeks Low</th>
                             <td id="fiftyTwoWeekLow"></td>
                         </tr>
-                        <tr>
+                        <tr title="The highest price the stock has traded at in the last 1 year.">
                             <th scope="row">52 Weeks High</th>
                             <td id="fiftyTwoWeekHigh"></td>
                         </tr>
-                        <tr>
+                        <tr title="The total number of shares traded today.">
                             <th scope="row">Volume</th>
                             <td id="volume"></td>
                         </tr>
-                        <tr>
+                        <tr title="The average number of shares traded daily over a period of time.">
                             <th scope="row">Average Volume</th>
                             <td id="averageVolume"></td>
                         </tr>
@@ -239,28 +239,28 @@
                 <h2>Valuation Metrics</h2>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr title="The total value of a company based on its stock price.">
                             <th scope="row">Market Cap</th>
                             <td id="marketCap"></td>
                         </tr>
-                        <tr>
+                        <t title="Price-to-Earnings ratio based on the company’s past earnings.">
                             <th scope="row">Trailing PE</th>
                             <td id="trailingPE"></td>
                         </tr>
-                        <tr>
+                        <tr title="Price-to-Earnings ratio based on expected future earnings.">
                             <th scope="row">Forward PE</th>
                             <td id="forwardPE"></td>
                         </tr>
-                        <tr>
+                        <tr title="Compares the stock price to the company’s net asset value.">
                             <th scope="row">Price To Book</th>
                             <td id="priceToBook"></td>
                         </tr>
-                        <tr>
+                        <tr title="Compares stock price to company revenue from the last 12 months.">
                             <th scope="row">Price To Sales Trailing 12 Months</th>
                             <td id="priceToSalesTrailing12Months"></td>
                         </tr>
-                        <tr>
-                            <th scope="row">Trailing Peg Ratio</th>
+                        <tr title="Measures PE ratio relative to the company’s earnings growth rate.">
+                            <th scope="row">Trailing PEG Ratio</th>
                             <td id="trailingPegRatio"></td>
                         </tr>
                     </tbody>
@@ -274,27 +274,27 @@
                 <h2>Financial Performance & Growth</h2>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr title="The total money the company made from sales or services.">
                             <th scope="row">Total Revenue</th>
                             <td id="totalRevenue"></td>
                         </tr>
-                        <tr>
+                        <tr title="The profit a company earned after all expenses and taxes.">
                             <th scope="row">Net Income To Common</th>
                             <td id="netIncomeToCommon"></td>
                         </tr>
-                        <tr>
+                        <tr title="The percentage increase (or decrease) in revenue over time.">
                             <th scope="row">Revenue Growth</th>
                             <td id="revenueGrowth"></td>
                         </tr>
-                        <tr>
+                        <tr title="The change in company profits compared to a previous period.">
                             <th scope="row">Earnings Growth</th>
                             <td id="earningsGrowth"></td>
                         </tr>
-                        <tr>
+                        <tr title="The percentage of revenue that becomes actual profit.">
                             <th scope="row">Profit Margins</th>
                             <td id="profitMargins"></td>
                         </tr>
-                        <tr>
+                        <tr title="Shows how efficiently a company generates profit using shareholders’ money.">
                             <th scope="row">Return On Equity</th>
                             <td id="returnOnEquity"></td>
                         </tr>
@@ -309,23 +309,23 @@
                 <h2>Dividends & Shareholder Returns</h2>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr title="The total dividend payment expected per share each year.">
                             <th scope="row">Dividend Rate</th>
                             <td id="dividendRate"></td>
                         </tr>
-                        <tr>
+                        <tr title="Dividend return as a percentage of the stock price.">
                             <th scope="row">Dividend Yield</th>
                             <td id="dividendYield"></td>
                         </tr>
-                        <tr>
+                        <tr title="The percentage of profits the company pays out as dividends.">
                             <th scope="row">Payout Ratio</th>
                             <td id="payoutRatio"></td>
                         </tr>
-                        <tr>
+                        <tr title="The cutoff date to qualify for the next dividend payment.">
                             <th scope="row">Ex Dividend Date</th>
                             <td id="exDividendDate"></td>
                         </tr>
-                        <tr>
+                        <tr title="The most recent dividend amount paid per share.">
                             <th scope="row">Last Dividend Value</th>
                             <td id="lastDividendValue"></td>
                         </tr>
@@ -340,15 +340,15 @@
                 <h2>Analyst Outlook & Events</h2>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr title="The average stock price analysts expect in the future.">
                             <th scope="row">Target Mean Price</th>
                             <td id="targetMeanPrice"></td>
                         </tr>
-                        <tr>
+                        <tr title="The highest price analysts believe the stock could reach.">
                             <th scope="row">Target High Price</th>
                             <td id="targetHighPrice"></td>
                         </tr>
-                        <tr>
+                        <tr title="The lowest price analysts expect the stock may fall to.">
                             <th scope="row">Target Low Price</th>
                             <td id="targetLowPrice"></td>
                         </tr>
@@ -360,7 +360,7 @@
                             <th scope="row">Recommendation</th>
                             <td id="recommendationKey"></td>
                         </tr>
-                        <tr>
+                        <tr title="The scheduled date/time when the company reports its earnings results.">
                             <th scope="row">Earnings Timestamp</th>
                             <td id="earningsTimestamp"></td>
                         </tr>
