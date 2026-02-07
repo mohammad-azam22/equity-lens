@@ -15,20 +15,15 @@ document.querySelector(".server").addEventListener("click", pingServer);
 
 async function pingServer() {
     document.querySelector(".server > span").innerText = "Please wait...";
-
-    let fromDate = "2020-03-27";
-    let toDate = "2020-04-02";
-    let ticker = "GOOG";
-
-
-    await fetch(`https://equity-lens.onrender.com/${ticker}/data`, {
+    
+    await fetch(`https://equity-lens.onrender.com/GOOG/data`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            from_date: fromDate,
-            to_date: toDate
+            from_date: "2020-03-27",
+            to_date: "2020-04-02"
         })
     })
         .then(response => {
