@@ -52,7 +52,7 @@ pip install -r requirements.txt
 ### 5. Run the Application
 ```bash
 python app.py                                       # Development server
-waitress-server --host=0.0.0.0 --port=9696 app:app  # Production server
+waitress-serve --host=0.0.0.0 --port=9696 app:app  # Production server
 ```
 
 The app will start on: `http://127.0.0.1:9696/`
