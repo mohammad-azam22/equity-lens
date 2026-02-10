@@ -60,3 +60,8 @@ The app will start on: `http://127.0.0.1:9696/`
 ## License
 
 This project is licensed under the MIT License.
+
+## Disclaimer
+
+This application is for educational purposes only and does not provide financial advice.
+The author is not liable for any losses incurred from using the predictions or data shown in this dashboard.
